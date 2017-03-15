@@ -218,6 +218,7 @@ define( [ "yasmf", "app/models/noteStorageSingleton", "text!html/noteListView.ht
               "NAME": notes[ note ].name,
               "REPRESENTATION": notes[ note ].representation,
               "MODIFIED": _y.D( notes[ note ].modifiedDate, "D" ),
+			  "STATUS": notes[ note ].Nstatus,
               "INFO": "" + _y.N( notes[ note ].formattedUnitValue )
             } );
             // attach any event handlers

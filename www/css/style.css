@@ -466,3 +466,23 @@ div.ui-glyph.ui-background-tint-color.ui-glyph-share.non-outline {
   border-top: 2px solid #484848;
   border-bottom: 2px solid #484848;
 }
+
+/*VERY out of place... Status css added 3/15/2017*/
+.noteListView .ui-list-item .note-status {
+	font-size: 16px;
+	line-height: 20px;
+	font-weight: 300;
+	color: rgba(87, 52, 32, 0.5);
+	float: right;
+	padding-left: 5%;
+}
+
+.ui-change-status{
+	background: transparent;
+	color: #573920;
+	line-height: 1.5em;
+	font-weight: 300;
+	border: none;
+	height: 90%;
+	font-size: 1.2em;
+}

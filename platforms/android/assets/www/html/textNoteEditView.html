@@ -28,7 +28,12 @@
       <div class="ui-bar-button ui-tint-color ui-back-button">%BACK%</div>
     </div>
     <div class="ui-bar-button-group ui-align-right">
-      <div class="ui-bar-button ui-destructive-color">%DELETE_NOTE%</div>
+		<select id="changeStatus" class="ui-change-status">				<!-- Dropdown for status select JTKitz 3/15/2017 -->
+			<option value="null">Set Status</option>
+			<option value="Followup">Followup</option>
+			<option value="Archive">Archive</option>
+		</select>
+		<div class="ui-bar-button ui-destructive-color">%DELETE_NOTE%</div>
     </div>
   </div>
   <div class="ui-scroll-container ui-avoid-navigation-bar ui-avoid-tool-bar">

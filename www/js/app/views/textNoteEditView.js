@@ -66,7 +66,11 @@ define( [ "yasmf", "app/models/noteStorageSingleton",
      */
     self.saveNote = function() {
       self._note.name = self._nameEditor.innerText;
-      self._note.textContents = self._contentsEditor.value;
+      self._note.textContents = self._contentsEditor.value; 
+	  var testing = ((document.getElementById("changeStatus")).options[(document.getElementById("changeStatus")).selectedIndex].value).toString(); // save the status change JTKitz 3/15/2017
+	  if ( testing != "null"){ // save the status change JTKitz 3/15/2017
+		 self._note.setStatus(testing); // save the status change JTKitz 3/15/2017
+	  };
       noteStorageSingleton.saveNote( self._note );
     };
     /**

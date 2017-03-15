@@ -57,6 +57,7 @@ define( [ "yasmf" ], function( _y ) {
     self.registerNotification( "mediaContentsChanged" );
     self.registerNotification( "unitValueChanged" );
     self.registerNotification( "unitLabelsChanged" );
+	self.registerNotification( "statusChanged" ); // Added for status Message 3/15/2017
     /**
      * The note's unique identifier. getUID is the getter, and
      * setUID is the setter. Two properties can be used to
@@ -123,6 +124,24 @@ define( [ "yasmf" ], function( _y ) {
       set: self.setName,
       configurable: true
     } );
+	
+	
+	/* JTKitz status define 3/15/2017 */
+	self._Nstatus = "New";
+    self.getStatus = function() {
+      return self._Nstatus;
+    };
+    self.setStatus = function( theStatus ) {
+      self._Nstatus = theStatus;
+      self.notify( "statusChanged" );
+    };
+    Object.defineProperty( self, "Nstatus", {
+      get: self.getStatus,
+      set: self.setStatus,
+      configurable: true
+    } );
+	
+	
     /**
      * Instead of the line count, we'll use a generic "unit". For the BaseNote, this
      * is still a line count, but other note types may use it differently.
@@ -229,7 +248,9 @@ define( [ "yasmf" ], function( _y ) {
         "mediaContents": self.mediaContents,
         "unitValue": self.unitValue,
         "unitLabels": self.unitLabels,
-        "representation": self.representation
+        "representation": self.representation,
+		"Tstatus": self._Nstatus // Added for Status Messages 3/15/2017
+		
       } );
     };
     Object.defineProperty( self, "JSON", {
@@ -249,9 +270,10 @@ define( [ "yasmf" ], function( _y ) {
         self.name = aNote.name;
         self.textContents = aNote.textContents;
         self.mediaContents = aNote.mediaContents;
-        self.unitValue = aNote.unitValue; // so we don't have to recalc it
+        self.unitValue = aNote.unitValue;
+		self.Nstatus = aNote.Tstatus// Added for Status Messages 3/15/2017
+        self._modifiedDate = new Date( aNote.modifiedDate ); // so we don't have to recalc it
         // but assign this one last so we have the proper modification date
-        self._modifiedDate = new Date( aNote.modifiedDate );
         return true;
       } catch ( e ) {
         return false;
